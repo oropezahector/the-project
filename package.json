@@ -1,0 +1,22 @@
+{
+  "name": "the-project",
+  "version": "1.0.0",
+  "description": "Project two repo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oropezahector/the-project.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oropezahector/the-project/issues"
+  },
+  "homepage": "https://github.com/oropezahector/the-project#readme",
+  "dependencies": {
+    "sequelize": "^3.30.4"
+  }
+}
