@@ -1,5 +1,5 @@
 # the-project
-(Staring Hector)
+(Starring Hector)
 
 ### Overview
 The Project is an application to aid those who are in the hunt for a new apartment.
