@@ -12,7 +12,7 @@ Reviews are made up of an array of categories including:
 * Community
 * Neighborhood Safety
 - - - 
-### Packages Used
+### Built With
 * Google Maps
 * Sequelize
 * Express
