@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/oropezahector/the-project#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.3",
+    "google-maps": "^3.2.1",
+    "method-override": "^2.3.8",
+    "passport": "^0.3.2",
     "sequelize": "^3.30.4"
   }
 }
