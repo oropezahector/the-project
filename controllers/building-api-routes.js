@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   app.post('/api/building', function(req, res) {
-    db.Review.create(req.body).then(function(building) {
+    models.Building.create(req.body).then(function(building) {
       res.json(building);
     });
   });

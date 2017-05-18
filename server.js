@@ -3,10 +3,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-
+var db = require('./models');
 
 var app = express();
 
+
+// app settings
 app.set('port', (process.env.PORT || 3000))
 
 app.use(express.static(process.cwd() + '/public'));
@@ -20,10 +22,16 @@ var handlebars = require('express-handlebars');
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-var routes = require('./controllers');
 
-app.use('/', routes);
+// routes
+require("./controllers/html-routes.js")(app);
+require("./controllers/building-api-routes.js")(app);
+require("./controllers/user-api-routes.js")(app);
+require("./controllers/reviews-api-routes.js")(app);
 
-app.listen(app.get('port'), function() {
-	console.log('Server listening on port: ' + app.get('port'));
+// connect to DB and start server
+db.sequelize.sync().then(function() {
+  app.listen(app.get('port'), function() {
+    console.log("App listening on PORT " + app.get('port'));
+  });
 });
