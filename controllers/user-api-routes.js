@@ -3,11 +3,7 @@ var models = require('../models');
 module.exports = function(app) {
 
   app.get('/api/users', function(req, res) {
-    models.User.findAll({
-      include: [{
-        model: models.Review
-      }]
-    }).then(function(users) {
+    models.User.findAll({}).then(function(users) {
       res.json(users);
     });
   });
