@@ -1,6 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var Reviews = sequelize.define("Review", {
-    scores: DataTypes.STRING,
+    scores: {
+      type:DataTypes.STRING,
+      allowNull: false
+    },
     comment: DataTypes.TEXT
   },
     {

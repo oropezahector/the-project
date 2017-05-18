@@ -1,18 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Building = sequelize.define("Building", {
-    Address: {
+    address: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
-    Ratings: {
-      type: DataTypes.INTEGER,
-      get: function(){
-        return this.getDataValue('Ratings').split(";")
-      },
-      set: function(val){
-        this.setDataValue('Ratings', val.join(";"));
-      }
-    }
+    ratings: DataTypes.STRING,
+    googleMaps_id: DataTypes.STRING
   },
     {
       classMethods: {
