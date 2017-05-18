@@ -2,10 +2,33 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var GoogleMaps = require('google-maps');
+var passport = require('passport-facebook');
 
 var db = require('./models');
 
 var app = express();
+
+passport.use(new FacebookStrategy({
+    clientID: 656771184520494,
+    clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
 
 // app settings
@@ -17,10 +40,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(methodOverride('_method'));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 var handlebars = require('express-handlebars');
 
 app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+
+
 
 
 // routes

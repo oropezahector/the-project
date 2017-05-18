@@ -8,6 +8,18 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get('/', function(req, res) {
-    res.render('index', {title: Test});
+    res.render('index', { title: 'Test' });
   });
+
+
+
+  app.get('/auth/facebook',
+    passport.authenticate('facebook'));
+
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      res.redirect('/');
+    });
+
 }
