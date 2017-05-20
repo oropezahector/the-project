@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       classMethods: {
         associate: function(models) {
 
-          Building.hasMany(models.Reviews, {
+          Building.hasMany(models.Review, {
             onDelete: "cascade"
           });
         }
