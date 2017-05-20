@@ -1,6 +1,5 @@
 var path = require('path');
-// Routes
-// =============================================================
+
 module.exports = function(app, passport) {
 
   app.get('/', function(req, res) {
@@ -11,7 +10,7 @@ module.exports = function(app, passport) {
     passport.authenticate('facebook'));
 
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
     function(req, res) {
       res.redirect('/');
     });
@@ -19,7 +18,10 @@ module.exports = function(app, passport) {
   app.get('/profile',
     require('connect-ensure-login').ensureLoggedIn(),
     function(req, res) {
-      console.log(req.user);
+      res.json(req.user);
     });
 
+  app.get('/errorlogin', function(req, res){
+    console.log('Error Logging in');
+  })
 }

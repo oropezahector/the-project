@@ -18,7 +18,7 @@
   GoogleMapsLoader.LANGUAGE = 'EN';
   GoogleMapsLoader.REGION = 'US';
   GoogleMapsLoader.VERSION = googleVersion;
-  GoogleMapsLoader.WINDOW_CALLBACK_NAME = "__google_maps_api_provider_initializator__";
+  GoogleMapsLoader.WINDOW_CALLBACK_NAME = "initMap";
   GoogleMapsLoader._googleMockApiObject = {};
   GoogleMapsLoader.load = function(fn) {
     if (google === null) {

@@ -1,27 +1,41 @@
 $(document).ready(function() {
 
-  GoogleMapsLoader.load(function(google) {
-	console.log('I just loaded google maps api');
-});
 
+  // initaialize Google Maps
+  function initMap(position) {
+    var uluru = { lat: position.coords.latitude, lng: position.coords.longitude };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: uluru
+    });
+  }
 
+  GoogleMapsLoader.onLoad(function(google) {
+    // console.log('I just loaded google maps api');
+    navigator.geolocation.getCurrentPosition(initMap);
+  });
 
+  GoogleMapsLoader.load();
+
+  // API call functions
   function getDataID(id, type) {
     var queryUrl;
     switch (type) {
       case "user":
-        queryUrl = "/api/users/" + id;
+        queryUrl = "/api/user/" + id;
         break;
       case "building":
-        queryUrl = "/api/buildings/" + id;
+        queryUrl = "/api/building/" + id;
+        break;
+      case "review":
+        queryUrl = "/api/review/" + id;
         break;
       default:
         return;
     }
     $.get(queryUrl, function(data) {
       if (data) {
-        console.log(data.UserID || data.id)
-        userId = data.UserID || data.id;
+        console.log(data);
       }
     });
   }
@@ -35,6 +49,7 @@ $(document).ready(function() {
       window.location.href = "/";
     } else {
       console.log(data);
+
     }
   }
 
@@ -47,6 +62,7 @@ $(document).ready(function() {
       window.location.href = "/";
     } else {
       console.log(data);
+
     }
   }
 

@@ -1,3 +1,16 @@
-#login-btn{
-	width: 200px;
+body {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
+#login-btn {
+  height: 4vh;
+}
+
+#map {
+  height: 95vh;
+  width: 100%;
+  display: fixed;
+  margin: 0px;
 }
