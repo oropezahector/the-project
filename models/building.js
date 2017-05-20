@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     ratings: DataTypes.STRING,
-    googleMaps_id: DataTypes.STRING
+    googleMaps_id: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   },
     {
       classMethods: {
