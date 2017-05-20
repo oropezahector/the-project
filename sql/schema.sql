@@ -1,5 +1,5 @@
-CREATE DATABASE database_development;
-CREATE DATABASE database_test;
-CREATE DATABASE database_production;
+CREATE DATABASE the_proj_development;
+CREATE DATABASE the_proj_test;
+CREATE DATABASE the_proj_production;
 
-USE database_development;
+USE the_proj_development;
