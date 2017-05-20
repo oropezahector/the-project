@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var mysql = require('mysql');
 
 
 var db = require('./models');
