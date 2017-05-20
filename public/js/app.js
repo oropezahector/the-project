@@ -1,7 +1,1 @@
-$(document).ready(function(){
-
-
-
-
-
-});
+console.log('THIS APP IS RUNNING!!');
