@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  GoogleMapsLoader.load(function(google) {
+	console.log('I just loaded google maps api');
+});
+
+
 
   function getDataID(id, type) {
     var queryUrl;
