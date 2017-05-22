@@ -1,3 +1,7 @@
-CREATE DATABASE the_proj_develop;
-CREATE DATABASE the_proj_test;
-CREATE DATABASE the_proj_production;
+
+CREATE DATABASE ppdb_development;
+CREATE DATABASE ppdb_test;
+CREATE DATABASE ppdb_production;
+
+USE ppdb_development;
+
