@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var mysql = require('mysql');
 
 
 var db = require('./models');
@@ -14,13 +15,10 @@ passport.use(new Strategy({
     clientID: 656771184520494,
     clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
     callbackURL: "http://localhost:3000/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
+  },function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
+    return cb(null, profile);
+  }));
 
 
 passport.serializeUser(function(user, cb) {
