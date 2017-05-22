@@ -3,10 +3,14 @@ $(document).ready(function() {
 
   // initaialize Google Maps
   function initMap(position) {
-    var uluru = { lat: position.coords.latitude, lng: position.coords.longitude };
+    var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
-      center: uluru
+      zoom: 15,
+      center: userLatLong
+    });
+    var marker = new google.maps.Marker({
+      position: userLatLong,
+      map: map
     });
   }
 

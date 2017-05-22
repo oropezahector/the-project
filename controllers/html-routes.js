@@ -23,5 +23,5 @@ module.exports = function(app, passport) {
 
   app.get('/errorlogin', function(req, res){
     console.log('Error Logging in');
-  })
+  });
 }

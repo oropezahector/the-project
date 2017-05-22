@@ -12,7 +12,7 @@
   var GoogleMapsLoader = {};
   GoogleMapsLoader.URL = "https://maps.googleapis.com/maps/api/js";
   GoogleMapsLoader.KEY = "AIzaSyAJuhjrdaRIhVVFkmB9XBkc-79CvwI8eZY";
-  GoogleMapsLoader.LIBRARIES = [];
+  GoogleMapsLoader.LIBRARIES = ['places'];
   GoogleMapsLoader.CLIENT = null;
   GoogleMapsLoader.CHANNEL = null;
   GoogleMapsLoader.LANGUAGE = 'EN';
