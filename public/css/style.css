@@ -1,6 +1,6 @@
 body{
-	background:url('../images/building.jpg') left bottom;
-	background-size: cover;
+	// background:url('../images/building.jpg') left bottom;
+	// background-size: cover;
 }
 header,footer{
 	background:#f1f1f1;
@@ -8,6 +8,9 @@ header,footer{
 }
 header{
 	border-bottom: 5px solid #FF5B5B;
+}
+.logo{
+	max-height: 100%;
 }
 footer{
 	border-top: 5px solid #FF5B5B;
@@ -21,8 +24,9 @@ footer .social{
 	font-size: 30px;
 }
 #main-content{
-	padding-top:40px;
-	padding-bottom:40px;
+	// padding-top:40px;
+	// padding-bottom:40px;
+	border-top: 10px solid #FF5B5B;
 }
 .navbar{
 	margin-bottom:0;
@@ -47,11 +51,11 @@ footer .social{
 }
 
 #login-btn {
-  height: 4vh;
+  height: 30px;
 }
 
 #map {
-  height: 95vh;
+  height: 100vh;
   width: 100%;
   display: fixed;
   margin: 0px;
