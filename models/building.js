@@ -8,18 +8,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    ratings: DataTypes.STRING,
-    {
-      classMethods: {
-        associate: function(models) {
+    ratings: DataTypes.STRING
+  // }, {
+  //   classMethods: {
+  //     associate: function(models) {
 
-          Building.hasMany(models.Review, {
-            onDelete: "cascade"
-          });
-        }
-      }
-    }
-  }
-  );
+  //       Building.hasMany(models.Review, {
+  //         onDelete: "cascade"
+  //       });
+  //     }
+  //   }
+  });
   return Building;
 };
