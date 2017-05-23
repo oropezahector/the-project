@@ -1,22 +1,22 @@
-{
+exports.config = {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "H31l0123",
+    "database": "ppdb_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "H31l0123",
+    "database": "ppdb_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
+    "password": "H31l0123",
+    "database": "ppdb_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
