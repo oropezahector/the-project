@@ -70,7 +70,7 @@ $(document).ready(function() {
 
   function newPlaceMarker(place) {
     var placesService = new google.maps.places.PlacesService(map);
-    // console.log(place.place_id);
+    console.log(place.place_id);
 
     placesService.getDetails({
       placeId: place.place_id

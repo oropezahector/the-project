@@ -9,15 +9,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     ratings: DataTypes.STRING
-  // }, {
-  //   classMethods: {
-  //     associate: function(models) {
+  }, {
+    classMethods: {
+      associate: function(models) {
 
-  //       Building.hasMany(models.Review, {
-  //         onDelete: "cascade"
-  //       });
-  //     }
-  //   }
+        Building.hasMany(models.Review, {
+          onDelete: "cascade"
+        });
+      }
+    }
   });
   return Building;
 };
