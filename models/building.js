@@ -2,7 +2,8 @@ module.exports = function(sequelize, DataTypes) {
   var Building = sequelize.define("Building", {
     place_id: {
       type: DataTypes.STRING,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false
     },
     address: {
       type: DataTypes.STRING,
