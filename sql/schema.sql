@@ -1,3 +1,3 @@
-CREATE DATABASE the_proj_develop;
-CREATE DATABASE the_proj_test;
-CREATE DATABASE the_proj_production;
+CREATE DATABASE the_proj_development_db;
+CREATE DATABASE the_proj_test_db;
+CREATE DATABASE the_proj_production_db;

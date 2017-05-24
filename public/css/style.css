@@ -1,10 +1,45 @@
-header,footer{
-	background:#f1f1f1;
-	padding:10px;
+body{
+	background: url('../images/building.jpg');
+	
+}
+
+header{
+
+
+}
+footer{
+	background: #f1f1f1;
+	border-top: 5px solid #FF5B5B;
+	color: #ffffff;
+	background: #545454;
+}
+
+#main-content{
+	padding-top: 30px;
+	padding-bottom: 60px;
+	
+
+
 }
 .navbar{
-	margin-bottom:0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	position: fixed;
+	margin-left: 20px;
+	
 }
+
 .logo{
-	font-size: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+	font-size: 50px;
+	float: left;
+
 }
+.content{
+	background: #fff;
+	border-radius: 2px;
+	
+}
+

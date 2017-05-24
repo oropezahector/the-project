@@ -17,14 +17,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand padding-top padding-left" href="#"><img src="img/" width="120%"></a>
+                        <a class="navbar-brand padding-top padding-left" href="#"><img src="img/logo.png" width="120%"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <div class="col-sm-6 col-md-6">
                             <div class="input-group">
                                 <input type="text" class="form-control pull left" style="margin-right:10px;" placeholder="Search..." id="query" name="query" value="">
                                 <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+                                     <button class="btn btn-outline-success btn-primary form-submit" type="submit">Search</button>
                                 </div>
                             </div>
                             </form>
@@ -44,31 +44,40 @@
 						<nav class="navbar navbar-light bg-faded">
 							<a class="navbar-brand" href="#">
 								<!-- <img src="" width="30" height="30" class="d-inline-block align-top" alt=""> -->
-								<div class="logo">💩</div>
+								
 								
 							</a>
-							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" placeholder="Search">
-								<button class="btn btn-outline-success btn-primary form-submit" type="submit">Search</button>
-							</form>
+							
 						</nav>
 					</div>
 				</div>
 			</div>
-		</header>
+		
 
-		<section id="main-content">
+		
+
 			<div class="container">
+			
 				<div class="row">
 					<div class="col-sm-12">
 						{{{body}}}
 					</div>
+
+					</div>
+					<div class="col-sm-8">
+						<div id="map"></div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			</div>
 				</div>
 			</div>
 		</section>
 		<body>
+		</header>
+
 		<!--slider2-->
-<div class="container margin-top">
+<div class="container">
             <div class="col-md-9 col-lg-9 col-sm-9 col-xs-12">
                 <h3>Find Your Dream Home!</h3>
             </div>
@@ -319,28 +328,56 @@
                 </div>
             </div>
         </div>
-
+        
+        <section id="main-content">			
+			<div class="container-fluid">
+ 				<div class="row">
+					<div class="col-sm-12">
+						
+					    {{!-- Google Maps APT --}}
+        <script src="js/google-maps.js" type="text/javascript"></script>
+					<div class="col-sm-4">
+						<h1>	
+							<a href="#">
+							<img src="/images/logo-sm.png" border="0"></a>
+					</h1>
+						
+					</div>
+					<div class="col-sm-8">
+						<div id="map"></div>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			</div>
+ 		
+ 
+	
 		</body>
 		<footer id="footer">
-			<div class="container">
-				<div class="row">
-				<div class="col-sm-4">
-						<h3>About Us</h3>
-	                	<small><p>Real people rating buildings management, residences, cleansliness, amenities and so much more!</p></small>
-
-					</div>
-					<div class="col-sm-4 float-left">
-						<h3>Contact</h3>
-		                <ul>
-		                    <li><small>svigos.anastasia@gmail.com</small></li>
-		                    <li><small>oropezahector@gmail.com</small></li>
-		                    <li><small>dan.gabel@gmail.com</small></li>
-		                    <li><small>samanthadwm@gmail.com</small></li>
-		                </ul>
-					</div>
-				</div>
-			</div>
-			
+			 <div class="container margin-top">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left">
+                <h3>About Us</h3>
+                <small><p>Real people rating buildings management, residences, cleansliness, amenities and so much more!</p></small>
+                
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+                <h3>Contact</h3>
+                <ul>
+                    <li><small>svigos.anastasia@gmail.com</small></li>
+                    <li><small>oropezahector@gmail.com</small></li>
+                    <li><small>dan.gabel@gmail.com</small></li>
+                    <li><small>samanthadwm@gmail.com</small></li>
+                </ul>
+            </div>
+        </div>
+        <div class="slider">
+            <div class="container-fluid background-green text-center padding-x margin-top">
+                <a href="#"><i class="fa fa-twitter lightgreen padding fontsize"></i></a>
+                <a href="#"><i class="fa fa-facebook lightgreen padding fontsize"></i></a>
+                <a href="#"><i class="fa fa-flickr lightgreen padding fontsize"></i></a>
+                <a href="#"><i class="fa fa-github lightgreen padding fontsize"></i></a>
+            </div>
+        </div>
         <div class="row">
             <div class="container-fluid background-black padding-10">
                 <small><a class="padding lightblack" href="#">Home</a>|</small>
@@ -348,14 +385,12 @@
             </div>
         </div>
     </div>
-					
-		
-
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+			</footer>
+       <script src="https://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	</footer>
+	
 </html>

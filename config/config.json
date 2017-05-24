@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "H31l0123",
-    "database": "the_proj_development",
+    "password": "",
+    "database": "the_proj_development_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "H31l0123",
-    "database": "the_proj_test",
+    "password": "",
+    "database": "the_proj_test_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "H31l0123",
-    "database": "the_proj_production",
+    "password": "",
+    "database": "the_proj_production_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

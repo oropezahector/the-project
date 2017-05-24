@@ -1,0 +1,30 @@
+<h1>Comments</h1>
+
+<ul>
+  {{#each comment}}
+    <li>
+      <p>
+        {{this.id}}. {{this.comment}}
+
+        <form action="/{{this.id}}?_method=DELETE" method="POST">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button type="submit">Delete</button>
+        </form>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+<h2>Add a COmment</h2>
+<form method="POST" action="/" class="button-size">
+	<textarea type="text" name="movie"></textarea>
+	<button type="submit">Save Comment!</button>
+</form>
+
+<h2>Update a Comment</h2>
+<form action="/?_method=PUT" method="POST" class="button-size">
+  <input type="text" name="id" placeholder="id">
+	<textarea type="text" name="comment" placeholder="what do you want to update this comment to?"></textarea>
+	<button type="submit">Update Comment!</button>
+</form>
+
