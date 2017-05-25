@@ -63,6 +63,8 @@ $(document).ready(function() {
       map.fitBounds(bounds);
     });
 
+
+    // Map Legend creation
     var legend = document.getElementById('legend');
     var icons = {
       badPlace: {
@@ -90,9 +92,13 @@ $(document).ready(function() {
     }
 
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
+
+    // Invokes getBuildings, filling in markers for each Buidling database entry
     getBuildings();
   }
 
+
+  // Checks address searches from the search box against the database, if the record doesn't exits, it POSTs it to the DB.
   function checkPlace(place) {
   	// console.log(place.rating);
     $.ajax({
@@ -121,6 +127,7 @@ $(document).ready(function() {
     });
   }
 
+  // Adds Markers to the map.
   function newPlaceMarker(place) {
     var placesService = new google.maps.places.PlacesService(map);
     // console.log(place.rating);
@@ -138,7 +145,7 @@ $(document).ready(function() {
         // label: '💩',
         icon: {
           url: '/images/mr-poopy-one.png',
-          scaledSize: new google.maps.Size(50, 50)
+          scaledSize: new google.maps.Size(30, 30)
         }
       });
 
@@ -149,12 +156,13 @@ $(document).ready(function() {
 
   }
 
-
+  // When the Google API is loaded, it grabs the current position from the browswer and initializes the map
   GoogleMapsLoader.onLoad(function(google) {
     // console.log('I just loaded google maps api');
     navigator.geolocation.getCurrentPosition(initMap);
   });
 
+  // Loads the Google Maps API
   GoogleMapsLoader.load();
 
 
