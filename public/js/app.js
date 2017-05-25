@@ -17,10 +17,6 @@ $(document).ready(function() {
       center: userLatLong
     });
 
-    infowindow = new google.maps.InfoWindow({
-      content: document.getElementById('form')
-    });
-
     messagewindow = new google.maps.InfoWindow({
       content: document.getElementById('message')
     });
@@ -28,7 +24,7 @@ $(document).ready(function() {
 
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
@@ -56,7 +52,7 @@ $(document).ready(function() {
           return;
         }
 
-        newPlaceMarker(place);
+        checkPlace(place);
 
         if (place.geometry.viewport) {
           bounds.union(place.geometry.viewport);
@@ -66,16 +62,73 @@ $(document).ready(function() {
       });
       map.fitBounds(bounds);
     });
+
+    var legend = document.getElementById('legend');
+    var icons = {
+      badPlace: {
+        name: 'Poor Score',
+        icon: {
+          url: '/images/mr-poopy-one.png',
+          width: '50px'
+        }
+      },
+      goodPlace: {
+        name: 'Good Score',
+        icon: {
+          url: '/images/mr-poopy-one.png',
+          width: '50px'
+        }
+      }
+    };
+    for (var key in icons) {
+      var type = icons[key];
+      var name = type.name;
+      var icon = type.icon;
+      var div = document.createElement('div');
+      div.innerHTML = '<img src="' + icon.url + '" width=' + icon.width + '> ' + name;
+      legend.appendChild(div);
+    }
+
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
+    getBuildings();
+  }
+
+  function checkPlace(place) {
+  	// console.log(place.rating);
+    $.ajax({
+      method: 'GET',
+      url: '/api/building/' + place.place_id
+    }).done(function(buildings) {
+      if (buildings) {
+        // console.log(buildings);
+       infowindow = new google.maps.InfoWindow({
+          content: buildings.place_id
+        });
+        newPlaceMarker(place);
+        return
+      }else{
+      	$.ajax({
+      		method: 'POST',
+      		url: '/api/building/',
+      		data: {
+      			address: place.formatted_address,
+      			place_id: place.place_id
+      		}
+      	}).done(function(buildings){
+      		newPlaceMarker(place);
+      	})
+      }
+    });
   }
 
   function newPlaceMarker(place) {
     var placesService = new google.maps.places.PlacesService(map);
-    console.log(place.place_id);
+    // console.log(place.rating);
 
     placesService.getDetails({
       placeId: place.place_id
     }, function(result, status) {
-
+    	console.log(result.rating);
       var marker = new google.maps.Marker({
         map: map,
         place: {
@@ -93,6 +146,7 @@ $(document).ready(function() {
         infowindow.open(map, marker);
       });
     });
+
   }
 
 
@@ -148,7 +202,9 @@ $(document).ready(function() {
     if (!data.length) {
       window.location.href = "/";
     } else {
-      console.log(data);
+      data.forEach(function(building){
+      	newPlaceMarker(building);
+      });
 
     }
   }

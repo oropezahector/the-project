@@ -8,10 +8,6 @@ module.exports = function(sequelize, DataTypes) {
     address: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    scores: {
-      type: DataTypes.STRING,
-      allowNull: false
     }
   }, {
     classMethods: {

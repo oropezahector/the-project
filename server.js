@@ -18,7 +18,7 @@ passport.use(new Strategy({
     clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
+    checkUser(profile);
     return cb(null, profile);
   }));
 
@@ -55,6 +55,11 @@ require("./controllers/html-routes.js")(app, passport);
 require("./controllers/building-api-routes.js")(app);
 require("./controllers/user-api-routes.js")(app);
 require("./controllers/reviews-api-routes.js")(app);
+
+function checkUser(profile){
+  console.log(profile.id);
+  
+}
 
 // connect to DB and start server
 db.sequelize.sync().then(function() {
