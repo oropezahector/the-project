@@ -3,9 +3,11 @@ var models = require('../models');
 module.exports = function(app) {
 
   app.get('/api/review', function(req, res) {
-    models.Reviews.findAll({
+    models.Review.findAll({
       include: [{
         model: models.User
+      },{
+        model:models.Building
       }]
     }).then(function(reviews) {
       res.json(reviews);
@@ -13,7 +15,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/review/:id', function(req, res) {
-    models.Reviews.findOne({
+    models.Review.findOne({
       where: {
         id: req.params.id
       },
@@ -26,13 +28,13 @@ module.exports = function(app) {
   });
 
   app.post('/api/review', function(req, res) {
-    db.Review.create(req.body).then(function(reviews) {
+    models.Review.create(req.body).then(function(reviews) {
       res.json(reviews);
     });
   });
 
   app.put('/api/review/:id', function(req, res){
-    db.Review.update(
+    models.Review.update(
       req.body,{
         where: {
           id: req.params.id
