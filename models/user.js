@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     fb_id: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     }
   }, {
     classMethods: {

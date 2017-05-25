@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = function(app, passport) {
 
   app.get('/', function(req, res) {
-    res.render('index', { title: 'Login' });
+    res.render('index', { title: 'Poopy Places!' });
   });
 
   app.get('/auth/facebook',
@@ -16,12 +16,13 @@ module.exports = function(app, passport) {
     });
 
   app.get('/profile',
-    require('connect-ensure-login').ensureLoggedIn(),
+    require('connect-ensure-login').ensureLoggedIn('/auth/facebook'),
     function(req, res) {
       res.json(req.user);
     });
 
   app.get('/errorlogin', function(req, res){
     console.log('Error Logging in');
+    res.redirect('/');
   });
 }

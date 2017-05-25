@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get('/api/user/:id', function(req, res) {
     models.User.findOne({
       where: {
-        id: req.params.id
+        fb_id: req.params.id
       },
       include: [{
         model: models.Review

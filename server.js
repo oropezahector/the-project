@@ -11,6 +11,8 @@ var db = require('./models');
 
 var app = express();
 
+
+// Facebook Login
 passport.use(new Strategy({
     clientID: 656771184520494,
     clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
@@ -28,7 +30,6 @@ passport.serializeUser(function(user, cb) {
 passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
-
 
 // app settings
 app.set('port', (process.env.PORT || 3000))

@@ -82,7 +82,11 @@ $(document).ready(function() {
           placeId: place.place_id,
           location: result.geometry.location
         },
-        label: '💩'
+        // label: '💩',
+        icon: {
+          url: '/images/mr-poopy-one.png',
+          scaledSize: new google.maps.Size(50, 50)
+        }
       });
 
       google.maps.event.addListener(marker, 'click', function() {

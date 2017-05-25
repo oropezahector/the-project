@@ -10,12 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         Review.belongsTo(models.User, {
           foreignKey: {
-            allowNull: false
+            allowNull: false,
           }
         });
         Review.belongsTo(models.Building, {
           foreignKey: {
-            allowNull: false
+            allowNull: false,
           }
         });
       }

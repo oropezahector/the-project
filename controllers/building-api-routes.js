@@ -15,7 +15,7 @@ module.exports = function(app) {
   app.get('/api/building/:id', function(req, res) {
     models.Building.findOne({
       where: {
-        id: req.params.id
+        place_id: req.params.id
       },
       include: [{
         model: models.Review
