@@ -87,7 +87,7 @@ $(document).ready(function() {
       var name = type.name;
       var icon = type.icon;
       var div = document.createElement('div');
-      div.innerHTML = '<img src="' + icon.url + '" width=' + icon.width + '> ' + name;
+      div.innerHTML = name + '<img src="' + icon.url + '" width=' + icon.width + '> ';
       legend.appendChild(div);
     }
 
@@ -135,7 +135,7 @@ $(document).ready(function() {
     placesService.getDetails({
       placeId: place.place_id
     }, function(result, status) {
-    	console.log(result.rating);
+    	// console.log(result);
       var marker = new google.maps.Marker({
         map: map,
         place: {
@@ -217,6 +217,11 @@ $(document).ready(function() {
     }
   }
 
+  $('#logout').on('click', logout);
 
+  function logout(){
+  	console.log('Logging Out ');
+  	document.cookie = 'connect.sid=; expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/';
+  }
 
 });

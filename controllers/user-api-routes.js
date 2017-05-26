@@ -26,4 +26,15 @@ module.exports = function(app) {
       res.json(users);
     });
   });
+
+  app.put('/api/user', function(req, res) {
+    models.User.update(
+      req.body, {
+        where: {
+          fb_id: req.body.fb_id
+        }
+      }).then(function(users) {
+      res.json(users);
+    })
+  })
 };

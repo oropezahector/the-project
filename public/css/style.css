@@ -8,6 +8,10 @@ body {
   height: 4vh;
 }
 
+#logout-btn {
+  height: 4vh;
+}
+
 #map {
   height: 95vh;
   width: 100%;

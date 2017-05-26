@@ -11,12 +11,14 @@ var db = require('./models');
 
 var app = express();
 
+var loggedInUser;
 
 // Facebook Login
 passport.use(new Strategy({
   clientID: 656771184520494,
   clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
-  callbackURL: "http://localhost:3000/auth/facebook/callback"
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  profileFields: ['id', 'displayName', 'email']
 }, function(accessToken, refreshToken, profile, cb) {
   checkUser(profile);
   return cb(null, profile);
@@ -57,22 +59,14 @@ require("./controllers/user-api-routes.js")(app);
 require("./controllers/reviews-api-routes.js")(app);
 
 function checkUser(profile) {
-  console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
-  db.User.findOne({
+  // console.log(profile._json);
+  // console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
+  db.User.update(profile._json,{
     where: {
       fb_id: profile.id
     }
   }).then(function(user) {
-    if (user) {
-      return
-    } else {
-      db.User.create({
-        fb_id: profile._json.id,
-        name: profile._json.name
-      }).then(function(user) {
-        console.log('New User Added');
-      });
-    }
+    console.log('USER: ' + user);
   });
 }
 
