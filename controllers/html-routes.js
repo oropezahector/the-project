@@ -3,11 +3,11 @@ var path = require('path');
 module.exports = function(app, passport) {
 
   app.get('/', function(req, res) {
-    res.render('index', { title: 'Login' });
+    res.render('index', { title: 'Poopy Places!' });
   });
 
   app.get('/auth/facebook',
-    passport.authenticate('facebook'));
+    passport.authenticate('facebook', { scope: ['email', 'user_friends'] }));
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
@@ -15,13 +15,13 @@ module.exports = function(app, passport) {
       res.redirect('/');
     });
 
-  app.get('/profile',
-    require('connect-ensure-login').ensureLoggedIn(),
-    function(req, res) {
-      res.json(req.user);
-    });
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
 
-  app.get('/errorlogin', function(req, res){
+  app.get('/errorlogin', function(req, res) {
     console.log('Error Logging in');
+    res.redirect('/');
   });
 }

@@ -6,6 +6,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     fb_id: {
       type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
+    email: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   }, {

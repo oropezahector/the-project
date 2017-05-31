@@ -9,16 +9,18 @@ body{
 h1{
 	font-size: 24px;
 	font-weight: bold;
-
 }
-h2{
-	margin:0;
-	line-height: 1.2;
-}
-.logo{
-	max-height: 100%;
-	text-align: center;
-	display: block;
+// h2{
+// 	margin:0;
+// 	line-height: 1.2;
+// }
+// .logo{
+// 	max-height: 100%;
+// 	text-align: center;
+// 	display: block;
+// }
+#logout-btn {
+  height: 4vh;
 }
 #map {
   height: 100vh;
