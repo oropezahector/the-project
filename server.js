@@ -26,6 +26,7 @@ passport.use(new Strategy({
 
 
 passport.serializeUser(function(user, cb) {
+  console.log("Serialize", user);
   cb(null, user);
 });
 
@@ -61,12 +62,13 @@ require("./controllers/reviews-api-routes.js")(app);
 function checkUser(profile) {
   // console.log(profile._json);
   // console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
-  db.User.update(profile._json,{
+  db.User.update(profile._json, {
     where: {
       fb_id: profile.id
     }
   }).then(function(user) {
-    console.log('USER: ' + user);
+    var loggedInUser = profile.id;
+    console.log('USER: ' + profile.id);
   });
 }
 
