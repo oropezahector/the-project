@@ -150,7 +150,7 @@ $(document).ready(function() {
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        console.log(marker.place.placeId);
+        // console.log(marker.place.placeId);
         getDataID(marker.place.placeId, 'building');
       });
     });
@@ -209,7 +209,7 @@ $(document).ready(function() {
 
   function renderBuildings(data) {
     if (!data.length) {
-      window.location.href = "/";
+      return;
     } else {
       data.forEach(function(building){
       	newPlaceMarker(building);
