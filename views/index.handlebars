@@ -1,19 +1,37 @@
 {{! Main }}
-{{!
+
 <h1>Welcome to Poopy Places</h1>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
 
 <form class="form-inline">
   <label class="sr-only" for="inlineFormInput">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
-  <button type="submit" class="btn btn-primary form-submit">Submit</button>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  
 </form>
-}}
+
 {{! Main }}
 
 <div class="location-info">
 	<div class="location-data">
+		<div class="review-address">
+			{{#each Reviews}}
+				{{address}}
+				{{length}}
+				Hello World
+			{{/each}}
+
+			{{#each reviews}}
+				{{address}}
+				{{length}}
+				Hello World
+			{{/each}}
+
+		</div>
+
+		
+		{{Reviews.address}}
+
 		<h2>222 N State</h2>
 		<p>Chicago IL, 60602<br />
 		Managed by <em>Company LLC</em></p>
@@ -89,6 +107,60 @@
 	</div>
 
 </div>
+
+
+<div class="review-form">
+<form>
+	<div class="form-group">
+	    <div>Review Category #1</div>
+	    <div>
+	        <p>Description text</p>
+	    </div>
+	    <label class="radio-inline">
+	        <input type="radio" name="category-one" id="inlineRadio1" value="1"> 1
+	    </label>
+	    <label class="radio-inline">
+	        <input type="radio" name="category-one" id="inlineRadio2" value="2"> 2
+	    </label>
+	    <label class="radio-inline">
+	        <input type="radio" name="category-one" id="inlineRadio2" value="3"> 3
+	    </label>
+	    <label class="radio-inline">
+	        <input type="radio" name="category-one" id="inlineRadio2" value="4"> 4
+	    </label>
+	    <label class="radio-inline">
+	        <input type="radio" name="category-one" id="inlineRadio2" value="5"> 5
+	    </label>
+	</div>
+	<div class="form-group">
+	    <div>Review Category #2</div>
+	    <div>
+	        <p>Description text</p>
+	    </div>
+	    <div class="score-bg">
+	        <div class="score">
+	            <label class="radio-inline active">
+	                <input type="radio" name="category-two" id="inlineRadio1" value="1">
+	            </label>
+	            <label class="radio-inline">
+	                <input type="radio" name="category-two" id="inlineRadio2" value="2">
+	            </label>
+	            <label class="radio-inline">
+	                <input type="radio" name="category-two" id="inlineRadio3" value="3">
+	            </label>
+	            <label class="radio-inline">
+	                <input type="radio" name="category-two" id="inlineRadio4" value="4">
+	            </label>
+	            <label class="radio-inline">
+	                <input type="radio" name="category-two" id="inlineRadio5" value="5">
+	            </label>
+	        </div>
+	    </div>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+                
 
 {{!
 <a href="/auth/facebook/">
