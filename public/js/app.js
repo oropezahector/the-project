@@ -150,7 +150,8 @@ $(document).ready(function() {
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
+        console.log(marker.place.placeId);
+        getDataID(marker.place.placeId, 'building');
       });
     });
 

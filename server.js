@@ -59,6 +59,7 @@ require("./controllers/building-api-routes.js")(app);
 require("./controllers/user-api-routes.js")(app);
 require("./controllers/reviews-api-routes.js")(app);
 
+// checks user 
 function checkUser(profile) {
   // console.log(profile._json);
   // console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
