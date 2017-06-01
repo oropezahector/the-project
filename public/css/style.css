@@ -1,20 +1,103 @@
-body {
-  margin: 0px;
-  border: 0px;
-  padding: 0px;
+body{
+	line-height: 2em;
+	font-size: 1.8em;
+	color:#444444;
 }
-
-#login-btn {
-  height: 4vh;
+#main-content{
+	border-top: 10px solid #FF5B5B;
 }
-
+h1{
+	font-size: 24px;
+	font-weight: bold;
+}
+// h2{
+// 	margin:0;
+// 	line-height: 1.2;
+// }
+// .logo{
+// 	max-height: 100%;
+// 	text-align: center;
+// 	display: block;
+// }
 #logout-btn {
   height: 4vh;
 }
-
 #map {
-  height: 95vh;
+  height: 100vh;
   width: 100%;
   display: fixed;
   margin: 0px;
 }
+.location-info{
+	border-top:1px solid #ccc;
+	padding-top:15px;
+}
+.location-info h3{
+	margin-bottom:0;
+	padding-bottom:10px;
+	border-bottom:1px solid #f1f1f1;
+}
+.cat-title{
+	font-size:18px;
+	font-weight: bold;
+}
+.location-info p{
+	line-height: 1.4em;
+}
+.review-data{
+	height:300px;
+	overflow: scroll;
+}
+.review-data h3{
+	font-size:20px;
+	border-bottom:1px solid #ccc;
+	padding-bottom:10px;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+	height: 0px;
+}
+.rating{
+	font-size: 32px;
+	border:1px solid #f1f1f1;
+	border-radius: 4px;
+	padding:4px 4px;
+}
+.rating:hover{
+	filter:saturate(100%) opacity(100%);
+}
+.inactive{
+	filter:saturate(10%) opacity(45%);
+}
+.review-promt{
+	text-align: center;
+	line-height: 1.6em;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-top:1px solid #f1f1f1;
+	margin-top:0;
+}
+.review-promt #login-btn {
+  height: 40px;
+}
+.review-promt h2{
+	margin-bottom: 15px;
+}
+#trending{
+	background:#ffffff;
+}
+footer{
+	border-top: 5px solid #FF5B5B;
+	color:#ffffff;
+	background:#545454;
+	padding-top:40px;
+	padding-bottom:40px;
+}
+footer a{
+	color:#fff;
+}
+footer .social{
+	font-size: 30px;
+}
+
