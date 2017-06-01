@@ -1,4 +1,5 @@
 # Poopy Places
+### A Building Rating App
 
 ### Overview
 Poopy Places is an application to aid those who are in the hunt for a new apartment.
