@@ -16,8 +16,8 @@ module.exports = function(app) {
       include: [{
         model: models.Review
       }]
-    }).then(function(users) {
-      res.json(users);
+    }).then(function(user) {
+      res.render('index', user);
     });
   });
 

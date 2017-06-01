@@ -1,4 +1,6 @@
 var models = require('../models');
+var user = require('../server.js');
+
 
 module.exports = function(app) {
 

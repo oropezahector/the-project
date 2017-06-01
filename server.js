@@ -17,16 +17,17 @@ var loggedInUser;
 passport.use(new Strategy({
   clientID: 656771184520494,
   clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
-  callbackURL: "http://localhost:3000/auth/facebook/callback",
+  callbackURL: 'http://localhost:3000/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'email']
 }, function(accessToken, refreshToken, profile, cb) {
   checkUser(profile);
+  loggedInUser = profile._json;
   return cb(null, profile);
 }));
 
 
 passport.serializeUser(function(user, cb) {
-  console.log("Serialize", user);
+  // console.log("Serialize", user);
   cb(null, user);
 });
 
@@ -54,12 +55,12 @@ app.set('view engine', 'handlebars');
 
 
 // routes
-require("./controllers/html-routes.js")(app, passport);
+require("./controllers/html-routes.js")(app, passport, loggedInUser);
 require("./controllers/building-api-routes.js")(app);
 require("./controllers/user-api-routes.js")(app);
 require("./controllers/reviews-api-routes.js")(app);
 
-// checks user 
+// checks user
 function checkUser(profile) {
   // console.log(profile._json);
   // console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
@@ -68,8 +69,8 @@ function checkUser(profile) {
       fb_id: profile.id
     }
   }).then(function(user) {
-    var loggedInUser = profile.id;
-    console.log('USER: ' + profile.id);
+    // loggedInUser = profile.id;
+    console.log('USER: ' + loggedInUser.name);
   });
 }
 

@@ -1,9 +1,30 @@
 var path = require('path');
+var models = require('../models');
 
 module.exports = function(app, passport) {
 
+  app.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
   app.get('/', function(req, res) {
-    res.render('index', { title: 'Poopy Places!' });
+    res.render('index', { title: 'Test' });
+  });
+
+  app.get('/:id?', function(req, res) {
+    var id = req.params.id;
+    models.User.findOne({
+      where: {
+        fb_id: id
+      }
+    }).then(function(user) {
+      if (user) {
+        res.render('index', { user: user.name });
+      } else {
+        res.redirect('/');
+      }
+    });
   });
 
   app.get('/auth/facebook',
@@ -12,13 +33,8 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
     function(req, res) {
-      res.redirect('/');
+      res.redirect('/' + req.user.id);
     });
-
-  app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
 
   app.get('/errorlogin', function(req, res) {
     console.log('Error Logging in');

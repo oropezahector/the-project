@@ -25,14 +25,18 @@
 		<div class="review-score" data-score=""></div>
 	</div>
 
-
+{{#if user}} 
+<div class='user'>
+	Welcome: {{user}}!
+</div>
+{{else}}
 	<div class="review-promt">
 		<h2>Want to review this place?</h2>
 		<a href="/auth/facebook/">
 			<img id='login-btn' src="/images/facebook-btn.png" alt="facebook-btn">
 		</a>
 	</div>
-
+{{/if}}
 </div>
 
 
