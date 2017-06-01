@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+    // map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
 
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
@@ -209,7 +209,8 @@ $(document).ready(function() {
 
   function renderBuildings(data) {
     if (!data.length) {
-      window.location.href = "/";
+      // window.location.href = "/";
+      return;
     } else {
       data.forEach(function(building){
       	newPlaceMarker(building);
