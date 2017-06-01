@@ -135,7 +135,7 @@ $(document).ready(function() {
     placesService.getDetails({
       placeId: place.place_id
     }, function(result, status) {
-      // console.log(result);
+      // console.log(result.geometry.location);
       var marker = new google.maps.Marker({
         map: map,
         place: {
@@ -231,16 +231,40 @@ $(document).ready(function() {
   }
 
   function pageBuildingRender(building) {
-    var reviewAddress = $('#review-address');
-    var reviewData = $('#review-data');
+    console.log(building);
 
-    if (building.Reviews.length > 0){
+    var reviewAddress = $('#review-address');
+    var reviewData = $('.review-data');
+
+    reviewAddress.html(building.address);
+
+    var scoreList = [];
+    scoreList[0] = 0;
+    scoreList[1] = 0;
+    scoreList[2] = 0;
+    scoreList[3] = 0;
+    scoreList[4] = 0;
+
+
+    if (building.Reviews.length > 0) {
+      var scoresDiv = $('<div>');
       for (var i = 0; i < building.Reviews.length; i++) {
-        console.log(building.Reviews[i]);
+        var scores = JSON.parse(building.Reviews[i].scores);
+        scoreList[0] += scores[0];
+        scoreList[1] += scores[1];
+        scoreList[2] += scores[2];
+        scoreList[3] += scores[3];
+        scoreList[4] += scores[4];
       }
-    }else {
-      reviewData.innerHTML('No Scores Posted');
+      for (var i = 0; i < scoreList.length; i++) {
+        scoreList[i] = scoreList[i]/building.Reviews.length;
+        scoresDiv.append('<p>'+scoreList[i]+'</p>');
+      }
+      reviewData.html(scoresDiv);
+    } else {
+      reviewData.html('No Scores Posted');
     }
+
 
   }
 
