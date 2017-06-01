@@ -100,29 +100,29 @@ $(document).ready(function() {
 
   // Checks address searches from the search box against the database, if the record doesn't exits, it POSTs it to the DB.
   function checkPlace(place) {
-  	// console.log(place.rating);
+    // console.log(place.rating);
     $.ajax({
       method: 'GET',
       url: '/api/building/' + place.place_id
     }).done(function(buildings) {
       if (buildings) {
         // console.log(buildings);
-       infowindow = new google.maps.InfoWindow({
+        infowindow = new google.maps.InfoWindow({
           content: buildings.place_id
         });
         newPlaceMarker(place);
         return
-      }else{
-      	$.ajax({
-      		method: 'POST',
-      		url: '/api/building/',
-      		data: {
-      			address: place.formatted_address,
-      			place_id: place.place_id
-      		}
-      	}).done(function(buildings){
-      		newPlaceMarker(place);
-      	})
+      } else {
+        $.ajax({
+          method: 'POST',
+          url: '/api/building/',
+          data: {
+            address: place.formatted_address,
+            place_id: place.place_id
+          }
+        }).done(function(buildings) {
+          newPlaceMarker(place);
+        })
       }
     });
   }
@@ -135,7 +135,7 @@ $(document).ready(function() {
     placesService.getDetails({
       placeId: place.place_id
     }, function(result, status) {
-    	// console.log(result);
+      // console.log(result);
       var marker = new google.maps.Marker({
         map: map,
         place: {
@@ -150,7 +150,7 @@ $(document).ready(function() {
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        // console.log(marker.place.placeId);
+        console.log(marker.place.placeId);
         getDataID(marker.place.placeId, 'building');
       });
     });
@@ -184,8 +184,18 @@ $(document).ready(function() {
         return;
     }
     $.get(queryUrl, function(data) {
-      if (data) {
-        console.log(data);
+      switch (type) {
+        case "user":
+          pageUserRender(data);
+          break;
+        case "building":
+          pageBuildingRender(data);
+          break;
+        case "review":
+          pageReviewRender(data);
+          break;
+        default:
+          return;
       }
     });
   }
@@ -199,7 +209,6 @@ $(document).ready(function() {
       window.location.href = "/";
     } else {
       console.log(data);
-
     }
   }
 
@@ -211,18 +220,40 @@ $(document).ready(function() {
     if (!data.length) {
       return;
     } else {
-      data.forEach(function(building){
-      	newPlaceMarker(building);
+      data.forEach(function(building) {
+        newPlaceMarker(building);
       });
-
     }
+  }
+
+  function pageUserRender(users) {
+
+  }
+
+  function pageBuildingRender(building) {
+    var reviewAddress = $('#review-address');
+    var reviewData = $('#review-data');
+
+    if (building.Reviews.length > 0){
+      for (var i = 0; i < building.Reviews.length; i++) {
+        console.log(building.Reviews[i]);
+      }
+    }else {
+      reviewData.innerHTML('No Scores Posted');
+    }
+
+  }
+
+
+  function pageReviewRender(review) {
+
   }
 
   $('#logout').on('click', logout);
 
-  function logout(){
-  	console.log('Logging Out ');
-  	document.cookie = 'connect.sid=; expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/';
+  function logout() {
+    console.log('Logging Out ');
+    document.cookie = 'connect.sid=; expires=Thu, 01-Jan-70 00:00:01 GMT; Path=/';
   }
 
 });
