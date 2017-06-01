@@ -8,8 +8,7 @@ Users will be able to search for a location and view any available reviews on th
 Reviews are made up of an array of categories including:
 * Cleanliness
 * Maintenance 
-* Community
-* Neighborhood Safety
+* Neighborhood
 
 The scoring system ranges from Good to Terrible, with varying levels of bad.
 - - - 
