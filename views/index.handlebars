@@ -1,8 +1,8 @@
 {{! Main }}
-	{{!
+	
 	<h1>Welcome to Poopy Places</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
-	}}
+	
 
 	<form class="form-inline">
 	  <label class="sr-only" for="inlineFormInput">Name</label>
@@ -13,18 +13,18 @@
 
 <div class="location-info">
 
-
 	<div class="location-data">
 		<h2 id="review-address">222 N State</h2>
 	</div>
-	
+
 	<h3>Ratings</h3>
 
 	<div class="review-data">
 		<div class="review-category">Cleanliness</div>
-		<div class="review-score" data-score=""></div>
+		<div class="review-score" data-score="75%">
+			<div class="review-scale"></div>
+		</div>
 	</div>
-
 
 	<div class="review-promt">
 		<h2>Want to review this place?</h2>
@@ -35,59 +35,181 @@
 
 </div>
 
-
 <div class="review-form">
-<form>
-	<div class="form-group">
-	    <div>Review Category #1</div>
-	    <div>
-	        <p>Description text</p>
-	    </div>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio1" value="1"> 1
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="2"> 2
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="3"> 3
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="4"> 4
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="5"> 5
-	    </label>
+	<div class="review-form-data">
+		<h2 id="review-form-address">222 N State</h2>
 	</div>
-	<div class="form-group">
-	    <div>Review Category #2</div>
-	    <div>
-	        <p>Description text</p>
-	    </div>
-	    <div class="score-bg">
-	        <div class="score">
-	            <label class="radio-inline active">
-	                <input type="radio" name="category-two" id="inlineRadio1" value="1">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio2" value="2">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio3" value="3">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio4" value="4">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio5" value="5">
-	            </label>
-	        </div>
-	    </div>
-	</div>
-	<button type="submit" class="btn btn-default">Submit</button>
+
+	<form>
+		{{!-- review category one --}}
+		<div class="form-group">
+		    <div class="form-category">Cleanliness</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+
+		    <div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+		</div>
+		
+		{{!-- review category two --}}
+		<div class="form-group">
+		    <div class="form-category">Responsiveness</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+
+		    <div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+
+		</div>
+
+		{{!-- review category three --}}
+		<div class="form-group">
+		    <div class="form-category">Something else</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+			<div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+		</div>
+
+		{{!-- review category four --}}
+		<div class="form-group">
+		    <div class="form-category">Something else</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+		    <div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" class="radio-button" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" class="radio-button" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" class="radio-button" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" class="radio-button" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" class="radio-button" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+		</div>
+
+		{{!-- review category five --}}
+		<div class="form-group">
+		    <div class="form-category">Something else</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+			<div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+		</div>
+
+
+		{{!-- review category six --}}
+		<div class="form-group">
+		    <div class="form-category">Something else</div>
+		    <div class="form-description">
+		        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id metus in enim fermentum mollis. Phasellus blandit urna at ex consectetur, a suscipit felis lobortis.</p>
+		    </div>
+		    <div class="form-scale">
+		    	<label class="">
+			        <input type="radio" name="category-one" id="inlineRadio1" value="1"> <span class="mr-pp one"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="2"> <span class="mr-pp two"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="3"> <span class="mr-pp three"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="4"> <span class="mr-pp four"></span>
+			    </label>
+			    <label class="">
+			        <input type="radio" name="category-one" id="inlineRadio2" value="5"> <span class="mr-pp five"></span>
+			    </label>
+		    </div>
+		</div>
+		
+		<div class="form-group">
+			<label>Additional Comments</label>
+			<textarea class="form-control" id="form-comments" rows="4"></textarea>
+		</div>
+
+		<button type="submit" id="submit-review" class="btn btn-default btn-primary btn-lg">Submit your review</button>
 	</form>
 </div>
                 
+<script>
+	$('.radio-button').click(function() {
+        console.log(this);
+
+    });
+</script>
 
 {{!
 <a href="/auth/facebook/">
