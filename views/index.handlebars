@@ -1,104 +1,31 @@
 {{! Main }}
+	{{!
+	<h1>Welcome to Poopy Places</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
+	}}
 
-<h1>Welcome to Poopy Places</h1>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
-
-<form class="form-inline">
-  <label class="sr-only" for="inlineFormInput">Name</label>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  
-</form>
-
+	<form class="form-inline">
+	  <label class="sr-only" for="inlineFormInput">Name</label>
+	  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	</form>
+	
 {{! Main }}
 
 <div class="location-info">
+
+
 	<div class="location-data">
-		<div class="review-address">
-			{{#each Reviews}}
-				{{address}}
-				{{length}}
-				Hello World
-			{{/each}}
-
-			{{#each reviews}}
-				{{address}}
-				{{length}}
-				Hello World
-			{{/each}}
-
-		</div>
-
-		
-		{{Reviews.address}}
-
-		<h2>222 N State</h2>
-		<p>Chicago IL, 60602<br />
-		Managed by <em>Company LLC</em></p>
+		<h2 id="review-address">222 N State</h2>
 	</div>
+	
 	<h3>Ratings</h3>
+
 	<div class="review-data">
-		<div class="rating-category">
-			<div class="cat-title">Cleanliness</div>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating inactive">👌</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
-		<div class="rating-category">
-			<div class="cat-title">Responsiveness</div>
-			<span class="rating active">💩</span>
-			<span class="rating active">💩</span>
-			<span class="rating active">💩</span>
-			<span class="rating active">💩</span>
-			<span class="rating active">💩</span>
-			<span class="rating active">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
-		<div class="rating-category">
-			<div class="cat-title">Category Name</div>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
-		<div class="rating-category">
-			<div class="cat-title">Category Name</div>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
-		<div class="rating-category">
-			<div class="cat-title">Category Name</div>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
-		<div class="rating-category">
-			<div class="cat-title">Category Name</div>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating active">👌</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-			<span class="rating inactive">💩</span>
-		</div>
+		<div class="review-category">Cleanliness</div>
+		<div class="review-score" data-score=""></div>
 	</div>
+
+
 	<div class="review-promt">
 		<h2>Want to review this place?</h2>
 		<a href="/auth/facebook/">
