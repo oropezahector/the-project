@@ -70,7 +70,7 @@ function checkUser(profile) {
     }
   }).then(function(user) {
     if (!user){
-      db.USER.create({
+      db.User.create({
         name: profile._json.name,
         fb_id: profile._json.id,
         email: profile._json.email
