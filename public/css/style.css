@@ -87,6 +87,11 @@ h1{
 #trending{
 	background:#ffffff;
 }
+
+#pac-input{
+	width: 280px;
+}
+
 footer{
 	border-top: 5px solid #FF5B5B;
 	color:#ffffff;
