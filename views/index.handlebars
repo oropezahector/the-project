@@ -1,98 +1,148 @@
+{{! Main }} {{!
+<h1>Welcome to Poopy Places</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
+}}
+<form class="form-inline">
+  <label class="sr-only" for="inlineFormInput">Name</label>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+</form>
 {{! Main }}
-	{{!
-	<h1>Welcome to Poopy Places</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tellus ante, pharetra a diam sit amet, laoreet viverra nulla. Nunc sagittis, nisl at auctor euismod, lacus orci semper ante, quis ultrices ligula libero eget augue. Vestibulum at nulla luctus, tempor nunc sed, pulvinar neque. Cras malesuada urna a diam mollis sagittis.</p>
-	}}
-
-	<form class="form-inline">
-	  <label class="sr-only" for="inlineFormInput">Name</label>
-	  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	</form>
-	
-{{! Main }}
-
 <div class="location-info">
-
-
-	<div class="location-data">
-		<h2 id="review-address">Click a Poo to check out the reviews</h2>
-	</div>
-	
-	<h3>Ratings</h3>
-
-	<div class="review-data">
-		<div class="review-category">Cleanliness</div>
-		<div class="review-score" data-score=""></div>
-	</div>
-
-{{#if user}} 
-<div class='user'>
-	Welcome: {{user}}!
+  <div class="location-data">
+    <h2 id="review-address">Click a Poo to check out the reviews</h2>
+  </div>
+  <h3>Ratings</h3>
+  <div class="review-data">
+    <div class="review-category">Scores will display here</div>
+    <div class="review-score" data-score=""></div>
+  </div>
+  {{#if user}}
+  <div id='user' data-id={{id}}>
+   <strong> Welcome:</strong> {{user}}!
+  </div>
+  {{else}}
+  <div class="review-promt">
+    <h2>Want to review this place?</h2>
+    <a href="/auth/facebook/">
+      <img id='login-btn' src="/images/facebook-btn.png" alt="facebook-btn">
+    </a>
+  </div>
+  {{/if}}
 </div>
-{{else}}
-	<div class="review-promt">
-		<h2>Want to review this place?</h2>
-		<a href="/auth/facebook/">
-			<img id='login-btn' src="/images/facebook-btn.png" alt="facebook-btn">
-		</a>
-	</div>
+{{#if user}}
+<div class="review-form hidden">
+  <form id='formData'>
+  	<fieldset>
+    <div class="form-group" id='cat1'>
+      <h3>Neighborhood</h3>
+      <div>
+        <p>How friendly is the surrounding area?</p>
+      </div>
+      <label class="radio-inline">
+        <input type="radio" name="score1" value="1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score1" value="2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score1" value="3"> 3
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score1" value="4"> 4
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score1" value="5"> 5
+      </label>
+    </div>
+    </fieldset>
+    <div class="form-group">
+      <h3>Cleanliness</h3>
+      <div>
+        <p>Are communal locations generally clean?</p>
+      </div>
+      <label class="radio-inline">
+        <input type="radio" name="score2" value="1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score2" value="2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score2" value="3"> 3
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score2" value="4"> 4
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score2" value="5"> 5
+      </label>
+    </div>
+    <div class="form-group">
+      <h3>Management Response</h3>
+      <div>
+        <p>Does it take a long time to receive a response about apartment problems?</p>
+      </div>
+      <label class="radio-inline">
+        <input type="radio" name="score3" value="1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score3" value="2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score3" value="3"> 3
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score3" value="4"> 4
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score3" value="5"> 5
+      </label>
+    </div>
+    <div class="form-group">
+      <h3>Up to Date</h3>
+      <div>
+        <p>Do the appliances and decor feel outdated?</p>
+      </div>
+      <label class="radio-inline">
+        <input type="radio" name="score4" value="1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score4" value="2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score4" value="3"> 3
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score4" value="4"> 4
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score4" value="5"> 5
+      </label>
+    </div>
+    <div class="form-group">
+      <h3>Noise</h3>
+      <div>
+        <p>Paper thin walls keeping you down?</p>
+      </div>
+      <label class="radio-inline">
+        <input type="radio" name="score5" value="1"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score5" value="2"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score5" value="3"> 3
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score5" value="4"> 4
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="score5" value="5"> 5
+      </label>
+    </div>
+    <button id='review-submit' type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
 {{/if}}
-</div>
-
-
-<div class="review-form">
-<form>
-	<div class="form-group">
-	    <div>Review Category #1</div>
-	    <div>
-	        <p>Description text</p>
-	    </div>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio1" value="1"> 1
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="2"> 2
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="3"> 3
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="4"> 4
-	    </label>
-	    <label class="radio-inline">
-	        <input type="radio" name="category-one" id="inlineRadio2" value="5"> 5
-	    </label>
-	</div>
-	<div class="form-group">
-	    <div>Review Category #2</div>
-	    <div>
-	        <p>Description text</p>
-	    </div>
-	    <div class="score-bg">
-	        <div class="score">
-	            <label class="radio-inline active">
-	                <input type="radio" name="category-two" id="inlineRadio1" value="1">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio2" value="2">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio3" value="3">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio4" value="4">
-	            </label>
-	            <label class="radio-inline">
-	                <input type="radio" name="category-two" id="inlineRadio5" value="5">
-	            </label>
-	        </div>
-	    </div>
-	</div>
-	<button type="submit" class="btn btn-default">Submit</button>
-	</form>
-</div>
-                
-
 {{!
 <a href="/auth/facebook/">
   <img id='login-btn' src="/images/facebook-btn.png" alt="Facebook Login">
@@ -103,8 +153,6 @@
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 <div id="map"></div>
 }}
-
 <div id="legend">
   <h3>Legend</h3>
 </div>
-

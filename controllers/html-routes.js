@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
       }
     }).then(function(user) {
       if (user) {
-        res.render('index', { user: user.name });
+        res.render('index', { user: user.name, id:user.fb_id });
       } else {
         res.redirect('/');
       }

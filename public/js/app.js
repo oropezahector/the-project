@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  var score1;
+  var score2;
+  var score3;
+  var score4;
+  var score5;
+  var commentField = $('#comment');
+  var address = $('#review-address');
+  var user = $('#user');
+  var reviewForm = $('.review-form');
 
   // initaialize Google Maps
 
@@ -122,7 +131,7 @@ $(document).ready(function() {
           }
         }).done(function(buildings) {
           newPlaceMarker(place);
-        })
+        });
       }
     });
   }
@@ -152,6 +161,7 @@ $(document).ready(function() {
       google.maps.event.addListener(marker, 'click', function() {
         console.log(marker.place.placeId);
         getDataID(marker.place.placeId, 'building');
+        reviewForm.removeClass('hidden');
       });
     });
 
@@ -200,18 +210,6 @@ $(document).ready(function() {
     });
   }
 
-  function getUsers() {
-    $.get("/api/user", renderUserList);
-  }
-
-  function renderUserList(data) {
-    if (!data.length) {
-      window.location.href = "/";
-    } else {
-      console.log(data);
-    }
-  }
-
   function getBuildings() {
     $.get("/api/building", renderBuildings);
   }
@@ -226,17 +224,14 @@ $(document).ready(function() {
     }
   }
 
-  function pageUserRender(users) {
-
-  }
-
   function pageBuildingRender(building) {
-    console.log(building);
+    // console.log(building);
 
     var reviewAddress = $('#review-address');
     var reviewData = $('.review-data');
 
     reviewAddress.html(building.address);
+    reviewAddress.attr('data-placeId', building.place_id);
 
     var scoreList = [];
     scoreList[0] = 0;
@@ -257,8 +252,8 @@ $(document).ready(function() {
         scoreList[4] += scores[4];
       }
       for (var i = 0; i < scoreList.length; i++) {
-        scoreList[i] = scoreList[i]/building.Reviews.length;
-        scoresDiv.append('<p>'+scoreList[i]+'</p>');
+        scoreList[i] = scoreList[i] / building.Reviews.length;
+        scoresDiv.append('<p>' + scoreList[i] + '</p>');
       }
       reviewData.html(scoresDiv);
     } else {
@@ -267,6 +262,52 @@ $(document).ready(function() {
 
 
   }
+
+  $("input:radio[name=score1]").click(function() {
+    score1 = $(this).val();
+  });
+
+  $("input:radio[name=score2]").click(function() {
+    score2 = $(this).val();
+  });
+
+  $("input:radio[name=score3]").click(function() {
+    score3 = $(this).val();
+  });
+  $("input:radio[name=score4]").click(function() {
+    score4 = $(this).val();
+  });
+  $("input:radio[name=score5]").click(function() {
+    score5 = $(this).val();
+  });
+
+  $('#review-submit').on('click', function(event) {
+    event.preventDefault();
+    var addressId = address.data('placeid');
+    var userId = user.data('id');
+
+
+    console.log(score1, score2, score3, score4, score5);
+    console.log('USER ID: ' + userId);
+    console.log('ADDRESS ID: ' + addressId);
+    if (score1 && score2 && score3 && score4 && score5) {
+      var reviewScores = [score1,score2,score3,score4,score5];
+      $.ajax({
+        method: 'POST',
+        url: '/api/review/',
+        data: {
+          UserFbId: userId,
+          BuildingPlaceId: addressId,
+          comment: commentField,
+          score: JSON.stringify(reviewScores)
+        }
+      }).done(function(review) {
+        getDataID(address.data('placeid'), 'building');
+      });
+    } else {
+      window.alert('Please fill in all scores to submit a review');
+    }
+  });
 
 
   function pageReviewRender(review) {
