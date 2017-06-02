@@ -9,6 +9,7 @@ $(document).ready(function() {
   var address = $('#review-address');
   var user = $('#user');
   var reviewForm = $('.review-form');
+  var reviewBtn = $('#reviewBtn');
 
   // initaialize Google Maps
 
@@ -161,7 +162,7 @@ $(document).ready(function() {
       google.maps.event.addListener(marker, 'click', function() {
         console.log(marker.place.placeId);
         getDataID(marker.place.placeId, 'building');
-        reviewForm.removeClass('hidden');
+        reviewBtn.removeClass('hidden');
       });
     });
 
@@ -285,12 +286,10 @@ $(document).ready(function() {
     event.preventDefault();
     var addressId = address.data('placeid');
     var userId = user.data('id');
-
-
-    console.log(score1, score2, score3, score4, score5);
-    console.log('USER ID: ' + userId);
-    console.log('ADDRESS ID: ' + addressId);
-    console.log(commentField.val());
+    // console.log(score1, score2, score3, score4, score5);
+    // console.log('USER ID: ' + userId);
+    // console.log('ADDRESS ID: ' + addressId);
+    // console.log(commentField.val());
     if (score1 && score2 && score3 && score4 && score5) {
       var temp =[score1,score2,score3,score4,score5]
       var reviewScores = JSON.stringify(temp);
@@ -305,16 +304,18 @@ $(document).ready(function() {
         }
       }).done(function(review) {
         getDataID(address.data('placeid'), 'building');
+        reviewForm.addClass('hidden');
+        reviewBtn.removeClass('hidden');
       });
     } else {
       window.alert('Please fill in all scores to submit a review');
     }
   });
 
-
-  function pageReviewRender(review) {
-
-  }
+  reviewBtn.on('click', function(){
+    reviewBtn.addClass('hidden');
+    reviewForm.removeClass('hidden');
+  });
 
   $('#logout').on('click', logout);
 
