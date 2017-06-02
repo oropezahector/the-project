@@ -5,7 +5,7 @@ $(document).ready(function() {
   var score3;
   var score4;
   var score5;
-  var commentField = $('#comment');
+  var commentField = $('#commentField');
   var address = $('#review-address');
   var user = $('#user');
   var reviewForm = $('.review-form');
@@ -154,7 +154,7 @@ $(document).ready(function() {
         // label: '💩',
         icon: {
           url: '/images/mr-poopy-one.png',
-          scaledSize: new google.maps.Size(30, 30)
+          scaledSize: new google.maps.Size(45, 45)
         }
       });
 
@@ -264,21 +264,21 @@ $(document).ready(function() {
   }
 
   $("input:radio[name=score1]").click(function() {
-    score1 = $(this).val();
+    score1 = parseInt($(this).val());
   });
 
   $("input:radio[name=score2]").click(function() {
-    score2 = $(this).val();
+    score2 = parseInt($(this).val());
   });
 
   $("input:radio[name=score3]").click(function() {
-    score3 = $(this).val();
+    score3 = parseInt($(this).val());
   });
   $("input:radio[name=score4]").click(function() {
-    score4 = $(this).val();
+    score4 = parseInt($(this).val());
   });
   $("input:radio[name=score5]").click(function() {
-    score5 = $(this).val();
+    score5 = parseInt($(this).val());
   });
 
   $('#review-submit').on('click', function(event) {
@@ -290,16 +290,18 @@ $(document).ready(function() {
     console.log(score1, score2, score3, score4, score5);
     console.log('USER ID: ' + userId);
     console.log('ADDRESS ID: ' + addressId);
+    console.log(commentField.val());
     if (score1 && score2 && score3 && score4 && score5) {
-      var reviewScores = [score1,score2,score3,score4,score5];
+      var temp =[score1,score2,score3,score4,score5]
+      var reviewScores = JSON.stringify(temp);
       $.ajax({
         method: 'POST',
         url: '/api/review/',
         data: {
           UserFbId: userId,
           BuildingPlaceId: addressId,
-          comment: commentField,
-          score: JSON.stringify(reviewScores)
+          comment: commentField.val(),
+          scores: reviewScores
         }
       }).done(function(review) {
         getDataID(address.data('placeid'), 'building');
