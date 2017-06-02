@@ -10,6 +10,8 @@ $(document).ready(function() {
   var user = $('#user');
   var reviewForm = $('.review-form');
   var reviewBtn = $('#reviewBtn');
+  var reviewCatagories = ['Neighborhood', 'Cleanliness', 'Management Response', 'Up to Date', 'Noise'];
+
 
   // initaialize Google Maps
 
@@ -244,6 +246,17 @@ $(document).ready(function() {
 
     if (building.Reviews.length > 0) {
       var scoresDiv = $('<div>');
+      var scoresTable = $('<table>');
+      var tableHead = $('<thead>');
+      var tableRow = $('<tr>');
+      scoresTable.addClass('table');
+      scoresTable.addClass('table-bordered')
+
+      tableRow.append('<th>Catagory</th>');
+      tableRow.append('<th>Score</th>');
+      tableHead.append(tableRow);
+      scoresTable.append(tableHead);
+
       for (var i = 0; i < building.Reviews.length; i++) {
         var scores = JSON.parse(building.Reviews[i].scores);
         scoreList[0] += scores[0];
@@ -252,10 +265,14 @@ $(document).ready(function() {
         scoreList[3] += scores[3];
         scoreList[4] += scores[4];
       }
+
       for (var i = 0; i < scoreList.length; i++) {
         scoreList[i] = scoreList[i] / building.Reviews.length;
-        scoresDiv.append('<p>' + scoreList[i] + '</p>');
+        var scoreRow = $('<tr>');
+        scoreRow.append('<td>' + reviewCatagories[i] + ': </td><td class="cat-score">' + scoreList[i] + '</td>');
+        scoresTable.append(scoreRow);
       }
+      scoresDiv.append(scoresTable)
       reviewData.html(scoresDiv);
     } else {
       reviewData.html('No Scores Posted');
@@ -291,7 +308,7 @@ $(document).ready(function() {
     // console.log('ADDRESS ID: ' + addressId);
     // console.log(commentField.val());
     if (score1 && score2 && score3 && score4 && score5) {
-      var temp =[score1,score2,score3,score4,score5]
+      var temp = [score1, score2, score3, score4, score5]
       var reviewScores = JSON.stringify(temp);
       $.ajax({
         method: 'POST',
@@ -313,7 +330,7 @@ $(document).ready(function() {
     }
   });
 
-  reviewBtn.on('click', function(){
+  reviewBtn.on('click', function() {
     reviewBtn.addClass('hidden');
     $('#reviewForm').modal('toggle');
   });

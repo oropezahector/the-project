@@ -64,12 +64,20 @@ require("./controllers/reviews-api-routes.js")(app);
 function checkUser(profile) {
   // console.log(profile._json);
   // console.log('ID: ' + profile._json.id + ' name: ' + profile._json.name);
-  db.User.update(profile._json, {
+  db.User.findOne(profile._json, {
     where: {
       fb_id: profile.id
     }
   }).then(function(user) {
-    // loggedInUser = profile.id;
+    if (!user){
+      db.USER.create({
+        name: profile._json.name,
+        fb_id: profile._json.id,
+        email: profile._json.email
+      }).then(function(user){
+        console.log('New User Created');
+      });
+    }
     console.log('USER: ' + loggedInUser.name);
   });
 }
