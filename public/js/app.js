@@ -308,13 +308,14 @@ $(document).ready(function() {
         reviewBtn.removeClass('hidden');
       });
     } else {
-      window.alert('Please fill in all scores to submit a review');
+      $('#error').modal('toggle');
+      reviewBtn.removeClass('hidden');
     }
   });
 
   reviewBtn.on('click', function(){
     reviewBtn.addClass('hidden');
-    reviewForm.removeClass('hidden');
+    $('#reviewForm').modal('toggle');
   });
 
   $('#logout').on('click', logout);
