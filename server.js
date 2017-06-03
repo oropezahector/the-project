@@ -69,7 +69,7 @@ function checkUser(profile) {
       fb_id: profile.id
     }
   }).then(function(user) {
-    if (!user){
+    if (user){
       db.User.create({
         name: profile._json.name,
         fb_id: profile._json.id,
