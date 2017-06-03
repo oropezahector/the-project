@@ -51,7 +51,7 @@ $(document).ready(function() {
         return;
       }
 
-      console.log(places.place_id);
+      console.log(places);
       getDataID(places.place_id, 'building');
       markers.forEach(function(marker) {
         marker.setMap(null);
