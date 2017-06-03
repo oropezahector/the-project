@@ -51,6 +51,7 @@ $(document).ready(function() {
         return;
       }
 
+      getDataID(places[0].placeId, 'building');
       markers.forEach(function(marker) {
         marker.setMap(null);
       });
@@ -73,6 +74,7 @@ $(document).ready(function() {
         }
       });
       map.fitBounds(bounds);
+
     });
 
 
@@ -335,7 +337,7 @@ $(document).ready(function() {
         getDataID(address.data('placeid'), 'building');
         reviewForm.addClass('hidden');
         reviewBtn.removeClass('hidden');
-        
+
       });
     } else {
       $('#error').modal('toggle');
