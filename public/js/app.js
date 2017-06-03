@@ -51,8 +51,8 @@ $(document).ready(function() {
         return;
       }
 
-      console.log(places);
-      getDataID(places.place_id, 'building');
+      console.log(places['0'].place_id);
+      getDataID(places['0'].place_id, 'building');
       markers.forEach(function(marker) {
         marker.setMap(null);
       });
