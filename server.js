@@ -17,7 +17,7 @@ var loggedInUser;
 passport.use(new Strategy({
   clientID: 656771184520494,
   clientSecret: '28d78f0e3b9d3fe08cccd784fef463aa',
-  callbackURL: 'http://poopy-places.herokuapp.com/auth/facebook/callback',
+  callbackURL: 'https://poopy-places.herokuapp.com/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'email']
 }, function(accessToken, refreshToken, profile, cb) {
   checkUser(profile);
