@@ -12,20 +12,29 @@ module.exports = function(app, passport) {
     res.render('index', { title: 'Test' });
   });
 
-  app.get('/:id/:name', function(req, res) {
+  app.get('/:id?', function(req, res) {
     var id = req.params.id;
-    var name = req.params.name;
-    res.render('index', { user: name, id: id });
+    models.User.findOne({
+      where: {
+        fb_id: id
+      }
+    }).then(function(user) {
+      if (user) {
+        res.render('index', { user: user.name, id:user.fb_id });
+      } else {
+        res.redirect('/');
+      }
+    });
   });
 
   app.get('/auth/facebook',
-    passport.authenticate('facebook', { authType: 'reauthenticate', scope: ['email', 'user_friends'] }));
+    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email', 'user_friends'] }));
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
     function(req, res) {
       console.log(req.user);
-      res.redirect('/' + req.user.id + '/' + req.user._json.name)
+      res.redirect('/'+ req.user.id);
     });
 
   app.get('/errorlogin', function(req, res) {
