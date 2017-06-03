@@ -16,6 +16,7 @@ h1 {
   background:#FF5B5B;
   border:none;
   margin-bottom: 20px;
+  margin-top:20px;
 }
 
 .btn-primary:hover{
@@ -65,7 +66,7 @@ h1 {
 }
 
 .review-data {
-  height: auto;
+  max-height: 300px;
   overflow: scroll;
 }
 
