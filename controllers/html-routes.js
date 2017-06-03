@@ -12,18 +12,10 @@ module.exports = function(app, passport) {
     res.render('index', { title: 'Test' });
   });
 
-  app.get('/:id?', function(req, res) {
+  app.get('/:id/:name', function(req, res) {
     var id = req.params.id;
-    models.User.findOne({
-      where: {
-        fb_id: id
-      }
-    }).then(function(user) {
-      if (user) {
-        res.render('index', { user: user.name, id:user.fb_id });
-      } else {
-        res.redirect('/');
-      }
+    var name = req.params.name;
+    res.render('index', { user: name, id:id });
     });
   });
 
@@ -34,10 +26,7 @@ module.exports = function(app, passport) {
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
     function(req, res) {
       console.log(req.user);
-      res.render('index', {
-        user: req.user._json.name,
-        id: req.user._json.id
-      });
+      res.redirect('/'+ req.user.id + '/'+ req.user._json.name)
     });
 
   app.get('/errorlogin', function(req, res) {
