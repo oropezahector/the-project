@@ -31,7 +31,7 @@ module.exports = function(app) {
 
   app.post('/api/review', function(req, res) {
     models.Review.create(req.body).then(function(reviews) {
-      res.redirect(req.get('referer'));
+      // res.redirect(req.get('referer'));
     });
   });
 
