@@ -335,7 +335,7 @@ $(document).ready(function() {
         getDataID(address.data('placeid'), 'building');
         reviewForm.addClass('hidden');
         reviewBtn.removeClass('hidden');
-        window.location.reload();
+        
       });
     } else {
       $('#error').modal('toggle');
