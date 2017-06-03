@@ -1,23 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
-  var Building = sequelize.define("Building", {
-    place_id: {
+  var User = sequelize.define("User", {
+    name: {
       type: DataTypes.STRING,
-      primaryKey: true,
       allowNull: false
     },
-    address: {
+    fb_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true
+    },
+    email: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
     classMethods: {
       associate: function(models) {
-
-        Building.hasMany(models.Review, {
+        User.hasMany(models.Review, {
           onDelete: "cascade"
         });
       }
     }
   });
-  return Building;
+  return User;
 };
