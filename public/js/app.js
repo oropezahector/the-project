@@ -53,6 +53,7 @@ $(document).ready(function() {
 
       console.log(places['0'].place_id);
       getDataID(places['0'].place_id, 'building');
+
       markers.forEach(function(marker) {
         marker.setMap(null);
       });
@@ -285,6 +286,7 @@ $(document).ready(function() {
       reviewData.html(scoresDiv);
 
       reviewData.append('<p><strong>Comments: </strong></p>');
+      reviewBtn.removeClass('hidden');
 
       for (var i = 0; i < building.Reviews.length; i++) {
         reviewData.append('<p>'+building.Reviews[i].comment+'</p>');
