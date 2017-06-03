@@ -1,4 +1,4 @@
-{
+exports.config = {
   "development": {
     "username": "root",
     "password": null,
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "yiadiruqfki0ly79",
-    "password": "v1i70wadggxbgw3t",
-    "database": "hh6aqk8lsrpc7rer",
-    "host": "y2w3wxldca8enczv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": null,
+    "database": "ppdb_production",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
