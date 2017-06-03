@@ -33,6 +33,7 @@ module.exports = function(app, passport) {
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
     function(req, res) {
+      console.log('USER: '+ req.user);
       res.render('index' + {
         user: req.user._json.name,
         id: req.user._json.id

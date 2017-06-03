@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "H31l0123",
     "database": "ppdb_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
