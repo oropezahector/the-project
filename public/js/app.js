@@ -250,10 +250,10 @@ $(document).ready(function() {
       var tableHead = $('<thead>');
       var tableRow = $('<tr>');
       scoresTable.addClass('table');
-      scoresTable.addClass('table-bordered')
+      // scoresTable.addClass('table-bordered')
 
-      tableRow.append('<th>Catagory</th>');
-      tableRow.append('<th>Score</th>');
+      // tableRow.append('<th>Catagory</th>');
+      // tableRow.append('<th>Score</th>');
       tableHead.append(tableRow);
       scoresTable.append(tableHead);
 
@@ -268,9 +268,15 @@ $(document).ready(function() {
 
       for (var i = 0; i < scoreList.length; i++) {
         scoreList[i] = scoreList[i] / building.Reviews.length;
-        var scoreRow = $('<tr>');
-        scoreRow.append('<td class="cat-title">' + reviewCatagories[i] + ': </td><td class="cat-score">' + scoreList[i] + '</td>');
+        var scoreRow = $('<div>');
+        var currentPercentage = scoreList[i]*20;
+
+        scoreRow.addClass('score-container').append('<span class="category-name">' + reviewCatagories[i] + ': </span><span class="score-explained">'+parseFloat(scoreList[i]).toFixed(1)+'</span>');
         scoresTable.append(scoreRow);
+
+        scoreRow.append('<div class="cat-score cat-score-'+scoreList[i]+'" data-score="'+scoreList[i]+'"><div class="cat-score-inner" style="width:'+currentPercentage+'%;"></div></div>');
+        scoresTable.append(scoreRow);
+
       }
       scoresDiv.append(scoresTable)
       reviewData.html(scoresDiv);
@@ -278,10 +284,10 @@ $(document).ready(function() {
       reviewData.append('<p><strong>Comments: </strong></p>');
 
       for (var i = 0; i < building.Reviews.length; i++) {
-        reviewData.append('<p>'+building.Reviews[i].scores+building.Reviews[i].comment+'</p>');
+        reviewData.append('<p>'+building.Reviews[i].comment+'</p>');
       }
     } else {
-      reviewData.html('No Scores Posted');
+      reviewData.html('No reviews yet, be the first one to review.');
     }
 
 

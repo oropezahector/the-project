@@ -18,9 +18,15 @@
   </div>
   <h3>Ratings</h3>
   <div class="review-data">
-    <div class="review-category">Scores will display here</div>
+    <div class="review-category">Nothing here yet.<br />Search or select a pin to leave a review.</div>
     <div class="review-score" data-score=""></div>
+    {{!-- <button id='reviewBtn' class="btn btn-primary btn-lg hidden">Add a Review</button> --}}
   </div>
+
+  {{#if user}}
+  <button id='reviewBtn' class="btn btn-primary btn-lg hidden">Add a Review</button>
+  {{/if}}
+
   {{#unless user}}
   <div class="review-promt">
     <h2>Want to review this place?</h2>
@@ -30,8 +36,10 @@
   </div>
   {{/unless}}
 </div>
+
 {{#if user}}
 <button id='reviewBtn' class="btn btn-primary btn-lg hidden">Add a Review</button>
+
 <div id='reviewForm' class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -41,7 +49,7 @@
       </div>
       <div class="modal-body">
         <div class="review-form">
-        <p>The worse a location is in the given catagory, the higher the poop rating. Be sure to give as honest feedback as possible</p>
+        <p>The worse a location is in the given catagory, the higher(darker) the poop rating. Be sure to give as honest feedback as possible</p>
           <form id='formData'>
             <fieldset>
               <div class="form-group" id='cat1'>
@@ -49,19 +57,19 @@
                 <div>
                   <p>How poopy is the surrounding area?</p>
                 </div>
-                <label class="radio-inline">
+                <label class="radio-inline score-one">
                   <input type="radio" name="score1" value="1"> 1
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline score-two">
                   <input type="radio" name="score1" value="2"> 2
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline score-three">
                   <input type="radio" name="score1" value="3"> 3
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline score-four">
                   <input type="radio" name="score1" value="4"> 4
                 </label>
-                <label class="radio-inline">
+                <label class="radio-inline score-five">
                   <input type="radio" name="score1" value="5"> 5
                 </label>
               </div>
@@ -71,19 +79,19 @@
               <div>
                 <p>Are communal locations generally poopy?</p>
               </div>
-              <label class="radio-inline">
+              <label class="radio-inline score-one">
                 <input type="radio" name="score2" value="1"> 1
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-two">
                 <input type="radio" name="score2" value="2"> 2
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-three">
                 <input type="radio" name="score2" value="3"> 3
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-four">
                 <input type="radio" name="score2" value="4"> 4
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-five">
                 <input type="radio" name="score2" value="5"> 5
               </label>
             </div>
@@ -92,19 +100,19 @@
               <div>
                 <p>Does it take a poopy long time to receive a response about apartment problems?</p>
               </div>
-              <label class="radio-inline">
+              <label class="radio-inline score-one">
                 <input type="radio" name="score3" value="1"> 1
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-two">
                 <input type="radio" name="score3" value="2"> 2
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-three">
                 <input type="radio" name="score3" value="3"> 3
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-four">
                 <input type="radio" name="score3" value="4"> 4
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-five">
                 <input type="radio" name="score3" value="5"> 5
               </label>
             </div>
@@ -113,19 +121,19 @@
               <div>
                 <p>Do the appliances and decor feel outdated or poopy?</p>
               </div>
-              <label class="radio-inline">
+              <label class="radio-inline score-one">
                 <input type="radio" name="score4" value="1"> 1
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-two">
                 <input type="radio" name="score4" value="2"> 2
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-three">
                 <input type="radio" name="score4" value="3"> 3
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-four">
                 <input type="radio" name="score4" value="4"> 4
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-five">
                 <input type="radio" name="score4" value="5"> 5
               </label>
             </div>
@@ -134,19 +142,19 @@
               <div>
                 <p>Is the building generally loud?</p>
               </div>
-              <label class="radio-inline">
+              <label class="radio-inline score-one">
                 <input type="radio" name="score5" value="1"> 1
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-two">
                 <input type="radio" name="score5" value="2"> 2
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-three">
                 <input type="radio" name="score5" value="3"> 3
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-four">
                 <input type="radio" name="score5" value="4"> 4
               </label>
-              <label class="radio-inline">
+              <label class="radio-inline score-five">
                 <input type="radio" name="score5" value="5"> 5
               </label>
             </div>
@@ -179,7 +187,9 @@
     </div>
   </div>
 </div>
+
 {{/if}}
+
 <!-- Modal -->
 {{!
 <a href="/auth/facebook/">
