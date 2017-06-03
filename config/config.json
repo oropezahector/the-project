@@ -8,14 +8,14 @@
   },
   "test": {
     "username": "root",
-    "password": "H31l0123",
+    "password": null,
     "database": "ppdb_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "H31l0123",
+    "password": null,
     "database": "ppdb_production",
     "host": "127.0.0.1",
     "dialect": "mysql"

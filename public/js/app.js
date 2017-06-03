@@ -157,7 +157,7 @@ $(document).ready(function() {
         // label: '💩',
         icon: {
           url: '/images/mr-poopy-one.png',
-          scaledSize: new google.maps.Size(45, 45)
+          scaledSize: new google.maps.Size(55, 55)
         }
       });
 
@@ -269,11 +269,17 @@ $(document).ready(function() {
       for (var i = 0; i < scoreList.length; i++) {
         scoreList[i] = scoreList[i] / building.Reviews.length;
         var scoreRow = $('<tr>');
-        scoreRow.append('<td>' + reviewCatagories[i] + ': </td><td class="cat-score">' + scoreList[i] + '</td>');
+        scoreRow.append('<td class="cat-title">' + reviewCatagories[i] + ': </td><td class="cat-score">' + scoreList[i] + '</td>');
         scoresTable.append(scoreRow);
       }
       scoresDiv.append(scoresTable)
       reviewData.html(scoresDiv);
+
+      reviewData.append('<p><strong>Comments: </strong></p>');
+
+      for (var i = 0; i < building.Reviews.length; i++) {
+        reviewData.append('<p>'+building.Reviews[i].scores+building.Reviews[i].comment+'</p>');
+      }
     } else {
       reviewData.html('No Scores Posted');
     }
@@ -331,7 +337,7 @@ $(document).ready(function() {
   });
 
   reviewBtn.on('click', function() {
-    reviewBtn.addClass('hidden');
+    // reviewBtn.addClass('hidden');
     $('#reviewForm').modal('toggle');
   });
 

@@ -1,0 +1,8 @@
+{
+  "name": "Poopy Places! Avoid crappy apartments",
+  "description": "A webapp utilizing Google Maps to give poop scores to bad places to live.",
+  "repository": "https://github.com/oropezahector/the-project",
+  "logo": "/public/images/logo-sm.png",
+  "keywords": ["node", "express", "apartments","Google Maps","Facebook Login"],
+  "image": "/public/images/mr-poopy-one.png"
+}

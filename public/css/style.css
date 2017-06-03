@@ -13,6 +13,7 @@ h1 {
   font-weight: bold;
 }
 
+
 /*h2 {
   margin: 0;
   line-height: 1.2;
@@ -48,7 +49,8 @@ h1 {
 }
 
 .cat-score {
-	
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .location-info p {
@@ -56,8 +58,9 @@ h1 {
 }
 
 .review-data {
-  height: 300px;
+  height: 500px;
   overflow: scroll;
+  background-color: #f1f1f1;
 }
 
 .review-data h3 {

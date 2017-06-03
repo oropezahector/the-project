@@ -28,7 +28,7 @@ module.exports = function(app, passport) {
   });
 
   app.get('/auth/facebook',
-    passport.authenticate('facebook', { scope: ['email', 'user_friends'] }));
+    passport.authenticate('facebook', {authType: 'reauthenticate', scope: ['email', 'user_friends'] }));
 
   app.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/errorlogin' }),
