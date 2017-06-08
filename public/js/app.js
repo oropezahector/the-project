@@ -22,6 +22,7 @@ $(document).ready(function() {
 
 
   function initMap(position) {
+    console.log(position);
     var geocoder = new google.maps.Geocoder;
     var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
 
