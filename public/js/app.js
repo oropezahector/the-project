@@ -23,7 +23,11 @@ $(document).ready(function() {
 
   function initMap(position) {
     var geocoder = new google.maps.Geocoder;
-    var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
+    if (position) {
+      var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
+    } else {
+      var userLatLong = {lat: 41.881832, lng: -87.623177}
+    }
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: userLatLong
@@ -273,12 +277,12 @@ $(document).ready(function() {
       for (var i = 0; i < scoreList.length; i++) {
         scoreList[i] = scoreList[i] / building.Reviews.length;
         var scoreRow = $('<div>');
-        var currentPercentage = scoreList[i]*20;
+        var currentPercentage = scoreList[i] * 20;
 
-        scoreRow.addClass('score-container').append('<span class="category-name">' + reviewCatagories[i] + ': </span><span class="score-explained">'+parseFloat(scoreList[i]).toFixed(1)+'</span>');
+        scoreRow.addClass('score-container').append('<span class="category-name">' + reviewCatagories[i] + ': </span><span class="score-explained">' + parseFloat(scoreList[i]).toFixed(1) + '</span>');
         scoresTable.append(scoreRow);
 
-        scoreRow.append('<div class="cat-score cat-score-'+scoreList[i]+'" data-score="'+scoreList[i]+'"><div class="cat-score-inner" style="width:'+currentPercentage+'%;"></div></div>');
+        scoreRow.append('<div class="cat-score cat-score-' + scoreList[i] + '" data-score="' + scoreList[i] + '"><div class="cat-score-inner" style="width:' + currentPercentage + '%;"></div></div>');
         scoresTable.append(scoreRow);
 
       }
@@ -289,7 +293,7 @@ $(document).ready(function() {
       reviewBtn.removeClass('hidden');
 
       for (var i = 0; i < building.Reviews.length; i++) {
-        reviewData.append('<p>'+building.Reviews[i].comment+'</p>');
+        reviewData.append('<p>' + building.Reviews[i].comment + '</p>');
       }
     } else {
       reviewData.html('No reviews yet, be the first one to review.');
