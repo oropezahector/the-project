@@ -23,6 +23,7 @@ $(document).ready(function() {
 
   function initMap(position) {
     var geocoder = new google.maps.Geocoder;
+    console.log(position);
     if (position) {
       var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
     } else {
