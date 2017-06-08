@@ -22,13 +22,16 @@ $(document).ready(function() {
 
 
   function initMap(position) {
-    console.log(position);
+    // console.log(position);
     var geocoder = new google.maps.Geocoder;
-    var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
+    if (position) {
+      var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
+    }
+    var defaultPositon = { lat: 41.881832, lng: -87.623177 }
 
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
-      center: userLatLong
+      center: userLatLong || defaultPositon
     });
 
     messagewindow = new google.maps.InfoWindow({
@@ -179,15 +182,10 @@ $(document).ready(function() {
   // When the Google API is loaded, it grabs the current position from the browswer and initializes the map
   GoogleMapsLoader.onLoad(function(google) {
     // console.log('I just loaded google maps api');
-    navigator.geolocation.getCurrentPosition(checkLocation);
+    navigator.geolocation.getCurrentPosition(initMap);
+    initMap();
   });
 
-  function checkLocation(location){
-    if (!location) {
-      userLatLong.coords = { latitude: 41.881832, longitude: -87.623177 }
-    }
-    initMap(location);
-  }
 
   // Loads the Google Maps API
   GoogleMapsLoader.load();
