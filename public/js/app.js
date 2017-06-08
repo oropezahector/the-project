@@ -24,6 +24,10 @@ $(document).ready(function() {
   function initMap(position) {
     var geocoder = new google.maps.Geocoder;
     var userLatLong = { lat: position.coords.latitude, lng: position.coords.longitude };
+    if (!userLatLong.lat) {
+      userLatLong = { lat: 41.881832, lng: -87.623177 }
+    }
+
     map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
       center: userLatLong
@@ -177,17 +181,7 @@ $(document).ready(function() {
   // When the Google API is loaded, it grabs the current position from the browswer and initializes the map
   GoogleMapsLoader.onLoad(function(google) {
     // console.log('I just loaded google maps api');
-    var location = navigator.geolocation.getCurrentPosition();
-
-    if (!locaiton) {
-      location.coords = {
-        latitude: 41.881832,
-        longitude: -87.623177
-      }
-    }
-
-    initMap(location);
-
+    navigator.geolocation.getCurrentPosition(initMap);
   });
 
   // Loads the Google Maps API
