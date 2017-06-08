@@ -180,9 +180,9 @@ $(document).ready(function() {
     var location = navigator.geolocation.getCurrentPosition();
 
     if (!locaiton) {
-      location = {
-        position.coords.latitude: 41.881832,
-        position.coords.longitude: -87.623177
+      location.coords = {
+        latitude: 41.881832,
+        longitude: -87.623177
       }
     }
 
